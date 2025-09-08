@@ -11,20 +11,20 @@ flask_cors.CORS(app)
 
 # Load models
 distance_model = xgb.XGBRegressor()
-distance_model.load_model('model/distance_model.json')
+distance_model.load_model('distance_model.json')
 
 distance_group_model = xgb.XGBRegressor()
-distance_group_model.load_model('model/distance_group_model.json')
+distance_group_model.load_model('distance_group_model.json')
 
 crs_elapsed_model = xgb.XGBRegressor()
-crs_elapsed_model.load_model('model/crs_elapsed_model.json')
+crs_elapsed_model.load_model('crs_elapsed_model.json')
 
 flight_delay_model = xgb.XGBClassifier()
-flight_delay_model.load_model('model/flight_delay_model.json')
+flight_delay_model.load_model('flight_delay_model.json')
 
-origin_encoder = joblib.load('model/origin_encoder.pkl')
-dest_encoder = joblib.load('model/dest_encoder.pkl')
-airline_encoder = joblib.load('model/airline_encoder.pkl')
+origin_encoder = joblib.load('origin_encoder.pkl')
+dest_encoder = joblib.load('dest_encoder.pkl')
+airline_encoder = joblib.load('airline_encoder.pkl')
 
 @app.route('/predict', methods=['POST'])
 def predict():
