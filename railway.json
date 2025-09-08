@@ -5,8 +5,6 @@
   },
   "deploy": {
     "startCommand": "python backend/app.py",
-    "healthcheckPath": "/",
-    "healthcheckTimeout": 100,
     "restartPolicyType": "always"
   }
 }
