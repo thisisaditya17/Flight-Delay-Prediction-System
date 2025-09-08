@@ -1,0 +1,17 @@
+.react-datepicker {
+  font-size: 1.1em;
+  width: 100% !important;
+}
+.react-datepicker__input-container input {
+  padding: 8px !important;
+  font-size: 16px !important;
+  width: 280px !important;
+  border: 2px solid #bbb !important;
+  border-radius: 6px !important;
+}
+
+.react-datepicker__day {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  line-height: 2.5rem !important;
+}
