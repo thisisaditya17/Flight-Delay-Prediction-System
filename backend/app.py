@@ -4,6 +4,7 @@ import numpy as np
 import joblib
 import flask
 import flask_cors
+import os
 
 app = flask.Flask(__name__)
 flask_cors.CORS(app)
@@ -73,4 +74,5 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
