@@ -1,3 +1,4 @@
 backend/__pycache__
 Flight Delay Dataset 2018-2024/flight_data.parquet
 frontend/flight-delay/node_modules
+flight_data_2018_2024.csv
