@@ -1,24 +1,21 @@
 # Use the official Python image as the base image
 FROM python:3.12
 
-# Set the working directory
+# Set the working directory to the project root
 WORKDIR /app
 
-# Copy the requirements file first (better caching)
-COPY requirements.txt .
-
-# Install the required Python packages
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the rest of the application code
+# Copy the entire project
 COPY . .
+
+# Install requirements from backend directory
+RUN pip install --no-cache-dir -r backend/requirements.txt
 
 # Create a non-root user for security
 RUN adduser --disabled-password --gecos '' appuser && chown -R appuser /app
 USER appuser
 
-# Expose the port (Render uses PORT environment variable)
+# Expose the port
 EXPOSE $PORT
 
-# Use Gunicorn instead of Flask development server
-CMD gunicorn --bind 0.0.0.0:$PORT --workers 2 app:app
+# Change to backend directory and run gunicorn
+CMD cd backend && gunicorn --bind 0.0.0.0:$PORT --workers 2 app:app
