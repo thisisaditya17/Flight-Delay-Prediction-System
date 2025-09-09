@@ -3,7 +3,7 @@ import Select from 'react-select';
 
 const OriginDropdown = ({ selectedOption, onChange }) => {
 
-  const options = [
+  const airports = [
     { value: 'MHT', label: 'Manchester-Boston Regional Airport (MHT)' },
     { value: 'IAD', label: 'Washington Dulles International Airport (IAD)' },
     { value: 'EWR', label: 'Newark Liberty International Airport (EWR)' },
@@ -356,6 +356,8 @@ const OriginDropdown = ({ selectedOption, onChange }) => {
     { value: 'DLG', label: 'Dillingham Airport (DLG)' },
     { value: 'AKN', label: 'King Salmon Airport (AKN)' }
   ];
+
+  const options = airports.sort((a, b) => a.label.localeCompare(b.label));
 
   const handleChange = (option) => {
     onChange(option);
