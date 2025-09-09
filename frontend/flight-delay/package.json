@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "lucide-react": "^0.542.0",
@@ -31,14 +33,6 @@
     "postcss": "^8.5.6",
     "vite": "^7.1.2"
   },
-  "homepage": "https://thisisaditya17.github.io/Flight-Delay-Prediction-System",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
-  }
+  "homepage": "https://thisisaditya17.github.io/Flight-Delay-Prediction-System"
 }
 
