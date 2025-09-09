@@ -4,17 +4,21 @@ FROM python:3.12
 # Set the working directory
 WORKDIR /app
 
-# Copy the requirements file into the container
+# Copy the requirements file first (better caching)
 COPY requirements.txt .
 
 # Install the required Python packages
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application code into the container
+# Copy the rest of the application code
 COPY . .
 
-# Expose the port that your Flask app listens on
-EXPOSE 5000
+# Create a non-root user for security
+RUN adduser --disabled-password --gecos '' appuser && chown -R appuser /app
+USER appuser
 
-# Start the Flask app
-CMD ["python", "app.py"]
+# Expose the port (Render uses PORT environment variable)
+EXPOSE $PORT
+
+# Use Gunicorn instead of Flask development server
+CMD gunicorn --bind 0.0.0.0:$PORT --workers 2 app:app
